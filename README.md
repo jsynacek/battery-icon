@@ -19,13 +19,12 @@ currently used to poll the battery status.
 
 TODO
 ====
-* autotolize
+* ~~autotolize~~ DONE
 
-* add conditional compilation for libnotify
+* ~~add conditional compilation for libnotify~~ DONE
 
 * implement detailed mode, which would use upower to provide useful battery information
 
 * implement simple preferences
 
 * get rid of g_spawn_* and implement acpi polling natively
-

@@ -26,7 +26,9 @@
 #include <libnotify/notify.h>
 
 static GtkStatusIcon *status_icon = NULL;
+#ifdef COMPILEWITH_NOTIFY
 static NotifyNotification *notification = NULL;
+#endif
 
 static gboolean get_battery_info(const gchar *acpi_out,
 				 gint *percentage,
@@ -105,7 +107,6 @@ static gboolean update_status(gpointer data)
 	gchar *icon_name;
 	gchar *summary;
 	gboolean status_changed;
-	GError *error = NULL;
 
 	g_spawn_command_line_sync("acpi -b", &out, NULL, NULL, NULL);
 	out[strlen(out) - 1] = '\0'; /* trim off trailing '\n' */
@@ -116,14 +117,15 @@ static gboolean update_status(gpointer data)
 	gtk_status_icon_set_tooltip_text(status_icon, out);
 	if (status_changed) {
 		gtk_status_icon_set_from_icon_name(status_icon, icon_name);
+#ifdef COMPILEWITH_NOTIFY
+                GError *error = NULL;
 		notify_notification_update(notification, summary, out, icon_name);
 		notify_notification_show(notification, &error);
-
 		if(error) {
 			g_printerr("%s\n", error->message);
 		}
+#endif
 	}
-
 	g_free(icon_name);
 	g_free(summary);
 
@@ -156,14 +158,16 @@ int main(int argc, char *argv[])
 	g_signal_connect(G_OBJECT(status_icon), "popup-menu",
 			 G_CALLBACK(status_icon_on_popup_menu), NULL);
 
-	/* TODO: conditional compilation */
+#ifdef COMPILEWITH_NOTIFY
 	notify_init("battery-icon");
 	notification = notify_notification_new(NULL, NULL, NULL);
-
+#endif
 	g_timeout_add(1000, update_status, NULL);
 
 	gtk_main();
 
+#ifdef COMPILEWITH_NOTIFY
 	notify_uninit();
+#endif
 	return EXIT_SUCCESS;
 }
