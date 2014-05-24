@@ -9,6 +9,14 @@ Why not name it batteryicon? Because there's software called like that already
 Why another battery systray plugin? Because I couldn't find anything that was
 simple, functional and wasn't part of a window manager or desktop environment.
 
+Running
+=======
+
+Simply 'make' and './battery-icon'.
+
+Note that the 'acpi' tool has to be installed on the system, since it's
+currently used to poll the battery status.
+
 TODO
 ====
 * autotolize
