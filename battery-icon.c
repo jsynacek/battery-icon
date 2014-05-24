@@ -35,6 +35,7 @@ static gboolean get_battery_info(const gchar *acpi_out,
 				 gchar **status_summary)
 {
 	static gint last_percentage = -1;
+	static gboolean last_is_charging = FALSE;
 
 	GRegex *re = g_regex_new("Battery (\\d+): (\\w+), (...?)%, ([0-9:]*) (.*)",
 				 0, 0, NULL);
@@ -88,6 +89,10 @@ static gboolean get_battery_info(const gchar *acpi_out,
 		status_changed = TRUE;
 		last_percentage = *percentage;
 	}
+	if (last_is_charging != *is_charging) {
+		status_changed = TRUE;
+	}
+	last_is_charging = *is_charging;
 
 	return status_changed;
 }
