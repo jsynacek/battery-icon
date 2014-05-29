@@ -5,11 +5,6 @@ AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CC
-AC_CHECK_PROG([acpi_bin], [acpi], [acpi], [no])
-if test "x${acpi_bin}" = xno; then
-   echo "'acpi' binary not found" 2>&1
-   exit 1
- fi
 
 # Args.
 AC_ARG_ENABLE([notify],
