@@ -7,6 +7,18 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CC
 
 # Args.
+AC_ARG_ENABLE([debug],
+              [AC_HELP_STRING(
+                [--enable-debug],
+                [enable debug build (default no)]
+              )],
+              [debug=${enableval}],
+              [debug=no])
+
+if test "x${debug}" = xyes; then
+   CFLAGS=" -g -O0 -DDEBUG"
+fi
+
 AC_ARG_ENABLE([notify],
               [AC_HELP_STRING(
                 [--enable-notify],
