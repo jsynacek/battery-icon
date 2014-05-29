@@ -1,0 +1,6 @@
+battery-icon 0.2.0
+==================
+
+Basic support for one system battery is implemented.
+
+Battery status is monitored using UPower and its DBus interface.

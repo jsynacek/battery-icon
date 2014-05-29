@@ -12,10 +12,9 @@ simple, functional and wasn't part of a window manager or desktop environment.
 Running
 =======
 
-Simply 'make' and './battery-icon'.
+Simply './autogen.sh', './configure', 'make' and './battery-icon'.
 
-Note that the 'acpi' tool has to be installed on the system, since it's
-currently used to poll the battery status.
+UPower with its DBus interface must be running on the system.
 
 TODO
 ====
@@ -23,8 +22,14 @@ TODO
 
 * ~~add conditional compilation for libnotify~~ DONE
 
+* ~~get rid of g_spawn_* and implement acpi polling natively~~
+
 * implement detailed mode, which would use upower to provide useful battery information
 
 * implement simple preferences
 
-* get rid of g_spawn_* and implement acpi polling natively
+* implement debug mode
+
+* implement support for multiple batteries
+
+* implement Qt version

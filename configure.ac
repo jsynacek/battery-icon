@@ -1,4 +1,4 @@
-AC_INIT([battery-icon], [0.1], [jan.synacek@gmail.com])
+AC_INIT([battery-icon], [0.2.0], [jan.synacek@gmail.com])
 AM_INIT_AUTOMAKE
 
 AC_CONFIG_HEADERS([config.h])
@@ -30,7 +30,7 @@ fi
 PKG_CHECK_MODULES([GTK], [gtk+-3.0])
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h string.h])
+AC_CHECK_HEADERS([stdlib.h])
 
 AC_CONFIG_FILES([Makefile])
 
