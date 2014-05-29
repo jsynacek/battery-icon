@@ -1,3 +1,12 @@
+battery-icon 0.2.1
+==================
+
+Fix a bug when warning notifications were shown when a battery was charging.
+
+Configure script no longer checks for 'acpi' binary, since it's no longer
+needed.
+
+
 battery-icon 0.2.0
 ==================
 

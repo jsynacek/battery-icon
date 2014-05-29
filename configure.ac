@@ -1,4 +1,4 @@
-AC_INIT([battery-icon], [0.2.0], [jan.synacek@gmail.com])
+AC_INIT([battery-icon], [0.2.1], [jan.synacek@gmail.com])
 AM_INIT_AUTOMAKE
 
 AC_CONFIG_HEADERS([config.h])
