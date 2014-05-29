@@ -63,7 +63,7 @@ void on_upower_changed(GDBusProxy *proxy,
 	gtk_status_icon_set_from_icon_name(status_icon, binfo->icon_name);
 
 #ifdef COMPILEWITH_NOTIFY
-	if (binfo->percentage < 20) {
+	if (binfo->percentage < 20 && binfo->state != BATTERY_STATE_CHARGING) {
 		GError *error = NULL;
 		notify_notification_update(notification,
 					   binfo->notification_status,
